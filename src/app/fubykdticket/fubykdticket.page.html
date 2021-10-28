@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Follow up Ticket {{kdticket}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let fu of fus">
+      <ion-label>
+        <h2>{{fu.username}}</h2>
+        <h3>{{fu.result}}</h3>
+        <p>
+          <ion-text color="danger">
+            <div [innerHTML]="fu.description"></div>
+          </ion-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>  
+
+</ion-content>

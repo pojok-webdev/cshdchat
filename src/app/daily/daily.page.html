@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>
+      <ion-datetime id="dynamicDisabled" displayFormat="DD MMM YYYY" value="{{dt}}" (ionChange)="datechange($event)"></ion-datetime>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-list>
+  <ion-item *ngFor="let t of tickets">
+    <ion-avatar slot="start">
+        <img src="./../../assets/shapes.svg">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{t.clientname}}</h2>
+      <h3>{{t.kdticket}}</h3>
+    </ion-label>
+    <div slot="end">
+        <ion-label>08:13</ion-label>
+        <ion-chip color="danger" (click)="gotofubykdticket({kdticket:t.kdticket})">FU</ion-chip>
+        <ion-badge color="danger">{{t.fucount}}</ion-badge>
+        <ion-chip color="success" (click)="gotochatbykdticket({kdticket:t.kdticket})">Chat</ion-chip>
+        <ion-badge color="success">20</ion-badge>
+      </div>
+  </ion-item>
+    </ion-list>
+</ion-content>

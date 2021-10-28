@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'chat',
+    redirectTo: 'daily',
     pathMatch: 'full'
   },
   {path:'lazy',
@@ -34,6 +34,18 @@ const routes: Routes = [
   {
     path: 'fus',
     loadChildren: () => import('./fus/fus.module').then( m => m.FusPageModule)
+  },
+  {
+    path: 'daily',
+    loadChildren: () => import('./daily/daily.module').then( m => m.DailyPageModule)
+  },
+  {
+    path: 'fubykdticket/:kdticket',
+    loadChildren: () => import('./fubykdticket/fubykdticket.module').then( m => m.FubykdticketPageModule)
+  },
+  {
+    path: 'chatbykdticket/:kdticket',
+    loadChildren: () => import('./chatbykdticket/chatbykdticket.module').then( m => m.ChatbykdticketPageModule)
   }
 ];
 

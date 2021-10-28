@@ -78,18 +78,7 @@ export class DataService {
     private http: HttpClient, 
     private nhttp: HTTP,
     private appserver:AppserverService
-    ) {
-    this.obj = http.get(this.appserver.server+'/gettickets')
-    this.obj.subscribe(
-      success=>{
-        console.log('Success',success)
-        this.messages = success
-      },
-      error=>{
-        console.log('Error',error)
-      }
-    )
-  }
+    ) { }
   public getTickets(callback){
     this.obj = this.http.get(this.appserver.server+'/gettickets')
     this.obj.subscribe(
@@ -99,6 +88,18 @@ export class DataService {
       },
       error=>{
         console.log('Error',error)
+      }
+    )
+  }
+  getTicketByDate(obj,callback){
+    this.obj = this.http.get(this.appserver.server+'/getticketbydate/'+obj.dt)
+    this.obj.subscribe(
+      success=>{
+        console.log('Success',success)
+        callback(success)
+      },
+      error=>{
+        console.log('Error get ticket by date',error)
       }
     )
   }
@@ -156,6 +157,17 @@ export class DataService {
   }
   public saveFu(obj,callback){
     this.obj = this.http.post<any>(this.appserver.server+'/savefu',obj)
+    this.obj.subscribe(
+      res=>{
+        callback(res)
+      },
+      err=>{
+        callback(err)
+      }
+    )
+  }
+  public insertChat(obj,callback){
+    this.obj = this.http.post<any>(this.appserver.server+'/insertchat',obj)
     this.obj.subscribe(
       res=>{
         callback(res)

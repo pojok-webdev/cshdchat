@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title><h2>{{ticket.clientname}}</h2></ion-title>
+    <ion-title><h5>{{kdticket}}</h5></ion-title>
+    <ion-icon name="arrow-undo-sharp" slot="end"></ion-icon>
+    <ion-icon name="information-circle-outline" slot="end"></ion-icon>
+    <ion-icon name="arrow-redo-sharp" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+      <ion-label slot="start">Rendy</ion-label>
+      <ion-select slot="end" interface="popover">
+          <ion-select-option value="0">Reply</ion-select-option>
+          <ion-select-option value="1">Star</ion-select-option>
+        </ion-select>
+    
+    </ion-item>
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        Multi-line text that should wrap when it is too long<br>
+        to fit on one line in the item.<br>
+        Btw bro ...<br>
+        What is your name<br>
+        ????
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Diny</ion-label>
+      <ion-icon (click)="showSubMenu()" name="chevron-down-sharp" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        Multi-line text that should wrap when it is too long<br>
+        Multi-line text that should wrap when it is too long<br>
+        to fit on one line in the item.<br>
+        Btw bro ...<br>
+        What is your name<br>
+        ????
+      </ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label slot="start">Irma</ion-label>
+        <ion-icon name="chevron-down-sharp" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item>
+          <ion-label class="ion-text-wrap">
+            Multi-line text that should wrap when it is too long<br>
+            Multi-line text that should wrap when it is too long<br>
+            to fit on one line in the item.<br>
+            Btw bro ...<br>
+            What is your name<br>
+            ????
+          </ion-label>
+      </ion-item>
+</ion-content>
+<ion-item>
+    <ion-textarea placeholder="Enter more information here..." (ionChange)="changeText($event)"></ion-textarea>
+    <ion-button slot="end" color="light" size="large" (click)="insertChat()">
+    <ion-icon name="send-sharp"></ion-icon>
+  </ion-button>
+</ion-item>
