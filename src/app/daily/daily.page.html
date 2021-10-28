@@ -1,7 +1,11 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-title>
-      <ion-datetime id="dynamicDisabled" displayFormat="DD MMM YYYY" value="{{dt}}" (ionChange)="datechange($event)"></ion-datetime>
+      <ion-item color="dark">
+          <ion-datetime slot="start" id="dynamicDisabled" displayFormat="DD MMM YYYY" value="{{dt}}" (ionChange)="datechange($event)"></ion-datetime>
+          <ion-badge slot="end" color="danger">FU</ion-badge>
+          <ion-badge slot="end" color="success">Chat</ion-badge>
+      </ion-item>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -17,10 +21,8 @@
     </ion-label>
     <div slot="end">
         <ion-label>08:13</ion-label>
-        <ion-chip color="danger" (click)="gotofubykdticket({kdticket:t.kdticket})">FU</ion-chip>
-        <ion-badge color="danger">{{t.fucount}}</ion-badge>
-        <ion-chip color="success" (click)="gotochatbykdticket({kdticket:t.kdticket})">Chat</ion-chip>
-        <ion-badge color="success">20</ion-badge>
+        <ion-chip color="danger" (click)="gotofubykdticket({kdticket:t.kdticket})">{{t.fucount}}</ion-chip>
+        <ion-chip color="success" (click)="gotochatbykdticket({kdticket:t.kdticket})">{{t.chatcount}}</ion-chip>
       </div>
   </ion-item>
     </ion-list>

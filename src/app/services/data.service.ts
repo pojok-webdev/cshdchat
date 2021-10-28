@@ -177,6 +177,17 @@ export class DataService {
       }
     )
   }
+  public getChatByKdticket(obj,callback){
+    this.obj = this.http.get<any>(this.appserver.server+'/getchatbykdticket/'+obj.kdticket)
+    this.obj.subscribe(
+      res=>{
+        callback(res)
+      },
+      err=>{
+        callback(err)
+      }
+    )
+  }
   public saveMobile(obj,callback){
     this.obj = this.http.post<any>(this.appserver.server+'/savemobile',obj)
     this.obj.subscribe(
