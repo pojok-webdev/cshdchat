@@ -12,8 +12,9 @@ import { ChatmenuComponent } from '../chatmenu/chatmenu.component';
 export class ChatbykdticketPage implements OnInit {
 description
 kdticket
+imei
 ticket = {
-  id:0,kdticket:'',clientname:'',ticketstart:'',create_date:''
+  id:0,kdticket:'',clientname:'',ticketstart:'',create_date:'',replied_id:0
 }
 chats = []
   constructor(
@@ -22,11 +23,13 @@ chats = []
     private popoverController: PopoverController
   ) {
     this.kdticket = this.activatedRoute.snapshot.paramMap.get('kdticket')
+    this.imei = this.activatedRoute.snapshot.paramMap.get('imei')
     this.data.getTicketByKdticket({kdticket:this.kdticket},ticket=>{
       console.log('ticket',ticket[0])
       this.ticket = ticket[0]
     })
     this.data.getChatByKdticket({kdticket:this.kdticket},chats=>{
+      console.log('chats',chats)
       this.chats = chats
     })
   }
@@ -40,20 +43,22 @@ chats = []
   insertChat(){
     console.log('insert',this.description)
     this.data.insertChat({
-      description:this.description,
-      username:'test',
+      description:JSON.stringify(this.description),
+      username:this.imei,
       kdticket:this.kdticket
     },res=>{
       console.log('chat saved',res)
       this.data.getChatByKdticket({kdticket:this.kdticket},chats=>{
         this.chats = chats
+        this.description = ""
       })  
     })
   }
-  async showSubMenu(){
+  async showSubMenu(id){
+    console.log('ID',id)
     const popup = await this.popoverController.create({
       component:ChatmenuComponent,
-      componentProps:{kdticket:this.kdticket}
+      componentProps:{kdticket:this.kdticket,replied_id:id}
     })
     popup.present()
     popup.onDidDismiss().then(res=>{

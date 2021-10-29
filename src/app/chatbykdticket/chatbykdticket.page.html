@@ -2,18 +2,15 @@
   <ion-toolbar color="dark">
     <ion-title><h2>{{ticket.clientname}}</h2></ion-title>
     <ion-title><h5>{{kdticket}}</h5></ion-title>
-    <ion-icon name="arrow-undo-sharp" slot="end"></ion-icon>
-    <ion-icon name="information-circle-outline" slot="end"></ion-icon>
-    <ion-icon name="arrow-redo-sharp" slot="end"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div *ngFor="let c of chats">
     <ion-item>
-      <ion-label slot="start" color="secondary">{{c.username}}</ion-label>
+      <ion-label slot="start" color="secondary">{{c.username}} - {{c.id}}</ion-label>
       <ion-label slot="end" color="default">{{c.createdate}}</ion-label>
-      <ion-icon slot="end" name="chevron-down-outline" (click)="showSubMenu()"></ion-icon>
+      <ion-icon slot="end" name="chevron-down-outline" (click)="showSubMenu(c.id)"></ion-icon>
     </ion-item>
     <ion-item>
       <ion-label class="ion-text-wrap">
@@ -23,7 +20,7 @@
   </div>
 </ion-content>
 <ion-item>
-    <ion-textarea placeholder="Enter more information here..." (ionChange)="changeText($event)"></ion-textarea>
+    <ion-textarea placeholder="Enter more information here..." (ionChange)="changeText($event)" [(ngModel)]="description"></ion-textarea>
     <ion-button slot="end" color="light" size="large" (click)="insertChat()">
     <ion-icon name="send-sharp"></ion-icon>
   </ion-button>

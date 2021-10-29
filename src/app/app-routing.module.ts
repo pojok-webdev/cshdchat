@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./fubykdticket/fubykdticket.module').then( m => m.FubykdticketPageModule)
   },
   {
-    path: 'chatbykdticket/:kdticket',
+    path: 'chatbykdticket/:kdticket/:imei',
     loadChildren: () => import('./chatbykdticket/chatbykdticket.module').then( m => m.ChatbykdticketPageModule)
   }
 ];

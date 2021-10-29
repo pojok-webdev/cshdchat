@@ -8,11 +8,14 @@ import { NavParams, PopoverController } from '@ionic/angular';
 })
 export class ChatmenuComponent implements OnInit {
 kdticket
+replied_id
   constructor(
     private navParams:NavParams,
     private popoverController: PopoverController  
   ) {
     this.kdticket = this.navParams.get('kdticket')
+    this.replied_id = this.navParams.get('replied_id')
+    console.log('replied id',this.replied_id)
   }
 
   ngOnInit() {}
